@@ -1,52 +1,29 @@
-# Simple Echo Connector
+# Prompt Mixer Cohere Connector
 
-This repository contains a simplified connector that uses an echo function to simulate responses from a chat model. It's designed to mimic the behavior of more complex connectors (like those interfacing with models such as Ollama), but without the need for external API calls. This can be particularly useful for testing, development, or educational purposes.
+This is a connector for Prompt Mixer that allows you to access the Cohere API from within Prompt Mixer.
 
 ## Features
 
-- Echo function that simulates chat responses
-- Mapping of chat completions to a standardized response format
-- Simple integration into existing TypeScript projects
-- Configurable to simulate different model types
+- Generate text using Cohere's language models
+- Pass prompts and settings to the Cohere API easily
+- View generated output directly in Prompt Mixer
 
 ## Installation
 
-Before installing this connector, ensure you have [Node.js](https://nodejs.org/) installed on your system.
+To install the Cohere Connector:
 
-1. **Clone the repository**
+1. Open Prompt Mixer and navigate to Connectors
+2. Select the Cohere Connector from the list of available connectors
+3. Click on "Install Plugin"
+4. Go to Connectors > Installed > Cohere to enter your Cohere API key
 
-```bash
-git clone https://github.com/PromptMixerDev/prompt-mixer-sample-connector.git
-cd prompt-mixer-sample-connector
-```
+## Usage
+Once you have installed the connector and configured your API key, you can start using Cohere's language models through the prompt editor in Prompt Mixer.
 
-2. **Install dependencies**
-
-```bash
-npm install
-```
-
-This will install all necessary dependencies, including TypeScript and any types required for development.
-
-## Configuration
-
-The `config` object can be adjusted to suit your needs. It's located in `config.ts`. By default, it might include placeholders for various configurations. Ensure you review and update it as necessary for your project.
+Please refer to the [Cohere API documentation](https://docs.cohere.com/reference/about) for details on supported models, prompt formatting, and available parameters.
 
 ## Contributing
-
-Contributions are welcome! If you have improvements or bug fixes, please follow these steps:
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -am 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Contributions to improve the Cohere Connector are welcome! Feel free to submit pull requests or open issues on the GitHub repository if you encounter any problems or have suggestions for enhancements.
 
 ## License
-
-This project is licensed under the MIT License
-
-## Acknowledgments
-
-- This project is inspired by the need for simple, mock connectors in development environments.
-- Thanks to all contributors and users for their interest and feedback.
+This connector is released under the MIT License.

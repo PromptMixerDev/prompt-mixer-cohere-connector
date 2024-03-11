@@ -1,11 +1,11 @@
 {
-	"id": "prompt-mixer-ollama-connector",
-	"name": "Ollama Connector",
+	"id": "prompt-mixer-cohere-connector",
+	"name": "Cohere Connector",
 	"version": "1.0.0",
 	"minAppVersion": "0.1.0",
-	"description": "Connector for model installed by Ollama",
+	"description": "Cohere Prompt Mixer connector to run Cohere's language models",
 	"author": "Prompt Mixer",
-	"authorUrl": "",
+	"authorUrl": "https://promptmixer.dev",
 	"fundingUrl": "",
 	"isDesktopOnly": true
 }

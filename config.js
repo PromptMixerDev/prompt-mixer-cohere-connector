@@ -1,10 +1,61 @@
 export const config = {
-	connectorName: 'Sample Connector',
-	models: ['sample-model'],
-	settings: [],
+	connectorName: 'Cohere',
+	models: [
+		'command-light',
+		'command-light-nightly',
+		'command',
+		'command-nightly',
+		'command-r',
+	],
+	settings: [
+		{
+			id: 'COHERE_API_KEY',
+			name: 'API Key',
+			value: '',
+			type: 'string',
+		},
+	],
+	properties: [
+		{
+			id: 'max_tokens',
+			name: 'Max Tokens',
+			value: 4096,
+			type: 'number',
+		},
+		{
+			id: 'temperature',
+			name: 'Temperature',
+			value: 0.3,
+			type: 'number',
+		},
+		{
+			id: 'k',
+			name: 'K',
+			value: 0,
+			type: 'number',
+		},
+		{
+			id: 'p',
+			name: 'P',
+			value: 0.75,
+			type: 'number',
+		},
+		{
+			id: 'frequency_penalty',
+			name: 'Frequency Penalty',
+			value: 0.75,
+			type: 'number',
+		},
+		{
+			id: 'presence_penalty',
+			name: 'Presence Penalty',
+			value: 0.0,
+			type: 'number',
+		},
+	],
 	description:
 		'This is a sample connector to demonstrate the Prompt Mixer connector API. It does not connect to any external service.',
-	author: 'Prompt Mixer team',
+	author: 'Prompt Mixer',
 	iconBase64:
-		'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQuNjY2NjcgMy4zMzMzNUM0LjY2NjY3IDEuODYwNTkgNS44NjA1NyAwLjY2NjY4NyA3LjMzMzMzIDAuNjY2Njg3QzguODA2MDcgMC42NjY2ODcgMTAgMS44NjA1OSAxMCAzLjMzMzM1SDEyQzEyLjM2ODIgMy4zMzMzNSAxMi42NjY3IDMuNjMxODMgMTIuNjY2NyA0LjAwMDAyVjYuMDAwMDJDMTQuMTM5NCA2LjAwMDAyIDE1LjMzMzMgNy4xOTM5NSAxNS4zMzMzIDguNjY2NjlDMTUuMzMzMyAxMC4xMzk0IDE0LjEzOTQgMTEuMzMzNCAxMi42NjY3IDExLjMzMzRWMTMuMzMzNEMxMi42NjY3IDEzLjcwMTYgMTIuMzY4MiAxNCAxMiAxNEgyLjY2NjY3QzIuMjk4NDggMTQgMiAxMy43MDE2IDIgMTMuMzMzNFY0LjAwMDAyQzIgMy42MzE4MyAyLjI5ODQ4IDMuMzMzMzUgMi42NjY2NyAzLjMzMzM1SDQuNjY2NjdaTTcuMzMzMzMgMi4wMDAwMkM2LjU5Njk1IDIuMDAwMDIgNiAyLjU5Njk3IDYgMy4zMzMzNUM2IDMuNDkwMzggNi4wMjY4NyAzLjYzOTcgNi4wNzU3IDMuNzc3ODVDNi4xNDc4MSAzLjk4MTkgNi4xMTY0MSA0LjIwODI1IDUuOTkxNDUgNC4zODQ5NUM1Ljg2NjQ5IDQuNTYxNjQgNS42NjM1NSA0LjY2NjY5IDUuNDQ3MTQgNC42NjY2OUgzLjMzMzMzVjEyLjY2NjdIMTEuMzMzM1YxMC41NTI5QzExLjMzMzMgMTAuMzM2NSAxMS40Mzg0IDEwLjEzMzYgMTEuNjE1MSAxMC4wMDg2QzExLjc5MTggOS44ODM2MiAxMi4wMTgxIDkuODUyMjIgMTIuMjIyMSA5LjkyNDM1QzEyLjM2MDMgOS45NzMxNSAxMi41MDk3IDEwIDEyLjY2NjcgMTBDMTMuNDAzMSAxMCAxNCA5LjQwMzA5IDE0IDguNjY2NjlDMTQgNy45MzAyOSAxMy40MDMxIDcuMzMzMzUgMTIuNjY2NyA3LjMzMzM1QzEyLjUwOTcgNy4zMzMzNSAxMi4zNjAzIDcuMzYwMjIgMTIuMjIyMSA3LjQwOTAyQzEyLjAxODEgNy40ODExNSAxMS43OTE4IDcuNDQ5NzUgMTEuNjE1MSA3LjMyNDgyQzExLjQzODQgNy4xOTk4MiAxMS4zMzMzIDYuOTk2ODkgMTEuMzMzMyA2Ljc4MDQ5VjQuNjY2NjlIOS4yMTk1M0M5LjAwMzEzIDQuNjY2NjkgOC44MDAyIDQuNTYxNjQgOC42NzUyIDQuMzg0OTVDOC41NTAyNyA0LjIwODI1IDguNTE4ODcgMy45ODE5IDguNTkxIDMuNzc3ODVDOC42Mzk4IDMuNjM5NyA4LjY2NjY3IDMuNDkwMzkgOC42NjY2NyAzLjMzMzM1QzguNjY2NjcgMi41OTY5NyA4LjA2OTczIDIuMDAwMDIgNy4zMzMzMyAyLjAwMDAyWiIgZmlsbD0iIzZGNzM3QSIvPgo8L3N2Zz4K',
+		'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPG1hc2sgaWQ9Im1hc2swXzMyMF80ODc4OSIgc3R5bGU9Im1hc2stdHlwZTpsdW1pbmFuY2UiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjEiIHk9IjEiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCI+CjxwYXRoIGQ9Ik0xNC40IDEuNTk5OThIMS42MDAwMVYxNC40SDE0LjRWMS41OTk5OFoiIGZpbGw9IndoaXRlIi8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMF8zMjBfNDg3ODkpIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01Ljc0NyA5LjIyMTE3QzYuMDkxNTMgOS4yMjExNyA2Ljc3Njg1IDkuMjAyMjcgNy43MjQxNCA4LjgxMjI1QzguODI4MDQgOC4zNTc3NiAxMS4wMjQzIDcuNTMyNzIgMTIuNjA4NiA2LjY4NTI3QzEzLjcxNjYgNi4wOTI1MyAxNC4yMDI0IDUuMzA4NjEgMTQuMjAyNCA0LjI1MjkyQzE0LjIwMjQgMi43ODc3NSAxMy4wMTQ2IDEuNTk5OTggMTEuNTQ5NCAxLjU5OTk4SDUuNDEwNkMzLjMwNjA3IDEuNTk5OTggMS42MDAwMSAzLjMwNjAzIDEuNjAwMDEgNS40MTA1N0MxLjYwMDAxIDcuNTE1MTEgMy4xOTczOCA5LjIyMTE3IDUuNzQ3IDkuMjIxMTdaIiBmaWxsPSIjNkY3MzdBIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNi43ODU5NSAxMS44NDUzQzYuNzg1OTUgMTAuODEzNyA3LjQwNyA5Ljg4MzU1IDguMzU5OCA5LjQ4ODFMMTAuMjkzMSA4LjY4NTc3QzEyLjI0ODUgNy44NzQyMSAxNC40MDA5IDkuMzExMjQgMTQuNDAwOSAxMS40Mjg1QzE0LjQwMDkgMTMuMDY4OCAxMy4wNzA5IDE0LjM5ODQgMTEuNDMwNSAxNC4zOThMOS4zMzc0MyAxNC4zOTc0QzcuOTI4MTYgMTQuMzk3MSA2Ljc4NTk1IDEzLjI1NDUgNi43ODU5NSAxMS44NDUzWiIgZmlsbD0iIzZGNzM3QSIvPgo8cGF0aCBkPSJNMy43OTY3IDkuNzIzNTFDMi41ODM1MiA5LjcyMzUxIDEuNjAwMDEgMTAuNzA2OSAxLjYwMDAxIDExLjkyMDFWMTIuMjA0N0MxLjYwMDAxIDEzLjQxNzggMi41ODM0OCAxNC40MDEzIDMuNzk2NjcgMTQuNDAxM0M1LjAwOTg1IDE0LjQwMTMgNS45OTMzNyAxMy40MTc4IDUuOTkzMzcgMTIuMjA0N1YxMS45MjAxQzUuOTkzMzcgMTAuNzA2OSA1LjAwOTg5IDkuNzIzNTEgMy43OTY3IDkuNzIzNTFaIiBmaWxsPSIjNkY3MzdBIi8+CjwvZz4KPC9zdmc+Cg==',
 };

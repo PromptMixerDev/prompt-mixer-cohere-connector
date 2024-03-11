@@ -1,8 +1,11 @@
 import { config } from './config';
+import { CohereClient } from 'cohere-ai';
+
+const API_KEY = 'COHERE_API_KEY';
 
 interface Message {
-	role: string;
-	content: string;
+	role: 'USER' | 'CHATBOT';
+	message: string;
 }
 
 interface Completion {
@@ -24,40 +27,49 @@ const mapToResponse = (outputs: ChatCompletion[]): ConnectorResponse => {
 	return {
 		Completions: outputs.map((output) => ({
 			Content: output.output,
-			TokenUsage: undefined, // Token usage is not provided in this simple echo connector
+			TokenUsage: undefined, // Token usage is not provided by Cohere API
 		})),
 		ModelType: outputs[0].stats.model,
 	};
 };
 
-// This is a mock function that simulates the behavior of an echo chat model
-async function echoChatModel(model: string, message: string): Promise<string> {
-	// Simply return the message as is, simulating an echo
-	return message;
-}
-
 async function main(
 	model: string,
 	prompts: string[],
+	properties: Record<string, unknown>,
+	settings: Record<string, unknown>,
 ): Promise<ConnectorResponse> {
-	const messageHistory: Message[] = [
-		{ role: 'system', content: 'You are a helpful assistant.' },
-	];
+	const cohere = new CohereClient({
+		token: settings?.[API_KEY] as string,
+	});
+
+	const { ...restProperties } = properties;
+
+	const messageHistory: Message[] = [];
 
 	const outputs: ChatCompletion[] = [];
 
 	try {
 		for (const prompt of prompts) {
-			messageHistory.push({ role: 'user', content: prompt });
+			messageHistory.push({ role: 'USER', message: prompt });
 
-			// Using the echoChatModel instead of an external API
-			const assistantResponse = await echoChatModel(model, prompt);
+			const response = await cohere.chatStream({
+				chatHistory: messageHistory,
+				message: prompt,
+				model,
+				...restProperties,
+			});
 
-			messageHistory.push({ role: 'assistant', content: assistantResponse });
+			let assistantResponse = '';
+			for await (const message of response) {
+				if (message.eventType === 'text-generation') {
+					assistantResponse += message.text;
+				}
+			}
 
+			messageHistory.push({ role: 'CHATBOT', message: assistantResponse });
 			outputs.push({ output: assistantResponse, stats: { model } });
-
-			console.log(`Echo response to prompt: ${prompt}`, assistantResponse);
+			console.log(`Cohere response to prompt: ${prompt}`, assistantResponse);
 		}
 
 		return mapToResponse(outputs);
